@@ -57,7 +57,7 @@ const Quiz = {
       <div class="question-card">
         <div class="question-meta">
           <span class="tag lesson-num">Урок ${q.lesson}</span>
-          <span class="tag">${q.block}</span>
+          <span class="tag block-tag">${q.block}</span>
         </div>
         <div class="question-text">${q.q}</div>
         <div id="answer-area">${answerHtml}</div>

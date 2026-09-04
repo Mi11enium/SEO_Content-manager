@@ -10,8 +10,22 @@ const App = {
         location.reload();
       }
     };
+    this.initTheme();
     this.goHome();
     Storage.updateStreak();
+  },
+
+  initTheme() {
+    var btn = document.getElementById("theme-btn");
+    if (!btn) return;
+    var current = document.documentElement.getAttribute("data-theme") || "dark";
+    btn.textContent = current === "dark" ? "🌙" : "☀️";
+    btn.onclick = () => {
+      var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("seo_trainer_theme", next); } catch (e) {}
+      btn.textContent = next === "dark" ? "🌙" : "☀️";
+    };
   },
 
   showScreen(id) {
