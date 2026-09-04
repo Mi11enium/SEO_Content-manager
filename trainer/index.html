@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SEO-тренажёр: 300 вопросов по 50 урокам SEO для контент-менеджера.">
+  <meta name="theme-color" content="#0f1419">
+  <title>SEO-тренажёр 🚀</title>
+  <script>
+    // Установка темы ДО загрузки стилей — чтобы избежать flash.
+    (function() {
+      try {
+        var t = localStorage.getItem('seo_trainer_theme');
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        else if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        else document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a id="brand" class="brand">SEO-тренажёр <span>·</span> 50 уроков</a>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="theme-toggle" id="theme-btn" title="Переключить тему" aria-label="Переключить тему">🌙</button>
+        <button class="btn secondary" id="reset-btn" style="padding:6px 12px; font-size:13px;">Сбросить</button>
+        <span class="streak-badge" id="streak-badge">🔥 0</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="screen active" id="home-screen"></section>
+    <section class="screen" id="theory-screen"></section>
+    <section class="screen" id="quiz-screen"></section>
+    <section class="screen" id="results-screen"></section>
+  </main>
+
+  <script src="js/questions.js"></script>
+  <script src="theory/lessons.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/theory.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
