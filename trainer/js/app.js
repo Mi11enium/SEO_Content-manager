@@ -46,6 +46,12 @@ const App = {
     this.renderHome();
   },
 
+  /** Открыть раздел теории (список уроков). */
+  openTheory() {
+    this.showScreen("theory-screen");
+    Theory.showList("");
+  },
+
   renderHome() {
     const stats = Storage.getStats();
     const home = document.getElementById("home-screen");
@@ -56,6 +62,14 @@ const App = {
         "<div class=\"stat-card\"><div class=\"value\">" + stats.accuracy + "%</div><div class=\"label\">точность</div></div>",
         "<div class=\"stat-card\"><div class=\"value\">" + stats.completed + "/50</div><div class=\"label\">уроков пройдено</div></div>",
         "<div class=\"stat-card\"><div class=\"value\">" + stats.totalAnswered + "</div><div class=\"label\">ответов дано</div></div>",
+      "</div>",
+      "<h2 style=\"margin-bottom: 12px; font-size: 18px;\">📚 Теория</h2>",
+      "<div class=\"modes\" style=\"margin-bottom: 20px;\">",
+      "  <button class=\"mode-card\" id=\"theory-btn\" style=\"grid-column: 1 / -1;\">",
+      "    <div class=\"emoji\">📖</div>",
+      "    <h3>Открыть теорию (50 уроков)</h3>",
+      "    <p>Читайте теорию по каждому уроку, а потом закрепляйте тестом.</p>",
+      "  </button>",
       "</div>",
       "<h2 style=\"margin-bottom: 12px; font-size: 18px;\">🎯 Режимы тренировки</h2>",
       "<div class=\"modes\">",
@@ -71,6 +85,8 @@ const App = {
     document.querySelectorAll(".mode-card").forEach(btn => {
       btn.onclick = () => this.startMode(btn.dataset.mode);
     });
+    const theoryBtn = document.getElementById("theory-btn");
+    if (theoryBtn) theoryBtn.onclick = () => this.openTheory();
     this.renderBlocks();
   },
 
